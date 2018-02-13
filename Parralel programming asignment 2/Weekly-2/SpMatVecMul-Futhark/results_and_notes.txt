@@ -1,0 +1,56 @@
+res
+res = map(\ (ri,inds,vals) -> vals*vct[inds])
+
+
+
+
+ri   1111 2222
+inds 3972 4753
+vals 1234 5678
+vect 2345 4321 66
+i    0123 4567 89
+
+res  42
+
+scatter X I A == write I A X
+
+
+1732
+1711
+1795
+1726
+1651
+1745
+1710
+1649
+1624
+1740
+
+
+gpu
+[mns267@a00332 SpMatVecMul-Futhark]$ futhark-dataset --i32-bounds=0:9999 -g [10000000]i32 --f32-bounds=-7.0:7.0 -g [10000000]f32 --i32-bounds=1000:1000 -g [10000]i32 --f32-bounds=-10.0:10.0 -g [10000]f32 | ./spMVmult-flat -r 10 -t /dev/stderr
+7269
+7232
+7394
+7293
+7297
+7276
+7265
+7346
+7258
+7307
+
+seq
+[mns267@a00332 SpMatVecMul-Futhark]$ futhark-dataset --i32-bounds=0:9999 -g [10000000]i32 --f32-bounds=-7.0:7.0 -g [10000000]f32 --i32-bounds=1000:1000 -g [10000]i32 --f32-bounds=-10.0:10.0 -g [10000]f32 | ./spMVmult-seq -r 10 -t /dev/stderr
+15098
+15053
+15061
+15049
+15099
+15094
+15100
+15033
+15037
+15097
+
+
